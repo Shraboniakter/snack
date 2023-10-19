@@ -22,6 +22,24 @@ class snackbar extends StatelessWidget{
     return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 
   }
+  MyAlertDialog(context){
+    return showDialog(context: context, builder: (BuildContext context){
+      return Expanded(child: AlertDialog(
+        title: Text("Alert !"),
+        content: Text('Do you want to delete'),
+        actions: [TextButton(onPressed: (){
+          Shrabonsnack("Delete Success", context);
+          Navigator.pop(context);
+        }, child: Text("yes")),
+          TextButton(onPressed: (){Navigator.pop(context);}, child: Text('No')),
+
+        ],
+
+      )
+      );
+    }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     ButtonStyle buttonStyle=ElevatedButton.styleFrom(
@@ -44,7 +62,7 @@ class snackbar extends StatelessWidget{
         children: [ Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children:[
-        ElevatedButton(onPressed: (){Shrabonsnack('Nice To Meet You', context);}, child: Text('Elevated Button',style: TextStyle(fontSize: 20),),style: buttonStyle,),
+        ElevatedButton(onPressed: (){MyAlertDialog(context);}, child: Text('Elevated Button',style: TextStyle(fontSize: 20),),style: buttonStyle,),
 
         ] )
         ],
