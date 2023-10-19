@@ -24,6 +24,14 @@ class snackbar extends StatelessWidget{
   }
   @override
   Widget build(BuildContext context) {
+    ButtonStyle buttonStyle=ElevatedButton.styleFrom(
+      minimumSize: Size(400, 40),
+      backgroundColor: Colors.lightBlueAccent,
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(40)),
+
+      )
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text('Snack'),
@@ -31,99 +39,17 @@ class snackbar extends StatelessWidget{
           IconButton(onPressed: (){Shrabonsnack("Hi I am Shrabon", context);}, icon:Icon( Icons.notifications))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        elevation:0,
-        child: Icon(Icons.add),
-        onPressed: () {
-          Shrabonsnack('Add New Data', context);
-        },),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.add_call),label:'Call'),
-          BottomNavigationBarItem(icon: Icon(Icons.home),label:'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle_sharp),label:'Profile'),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [ Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+        ElevatedButton(onPressed: (){Shrabonsnack('Nice To Meet You', context);}, child: Text('Elevated Button',style: TextStyle(fontSize: 20),),style: buttonStyle,),
+
+        ] )
         ],
-        onTap: (int index){
-          if(index==0){
-            Shrabonsnack('Please Call ', context);
-          }
-          if(index==1){
-            Shrabonsnack('My Home ', context);
-
-          }
-          if(index==2){
-            Shrabonsnack('my profile', context);
-
-          }
-        },
       ),
-      endDrawer: Drawer(child:
-      ListView(children: [
-        DrawerHeader(
-          padding: EdgeInsets.all(0),
-          child:UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: Colors.black),
-            accountName: Text('shrabon'),
-            accountEmail: Text('shrabonbhuiyan708@gmail.com'),
-            currentAccountPicture: Image.network('https://web-strapi.mrmilu.com/uploads/flutter_logo_470e9f7491.png'),
-          ),
 
-        ),
-        ListTile(leading:Icon(Icons.home),title: Text('Home'),
-          onTap: (){print('Go to Home');Shrabonsnack('Go to Home', context);
-
-          },
-          onLongPress: (){
-            Shrabonsnack('Error', context);
-          },
-
-        ),
-        ListTile(leading:Icon(Icons.contact_page_outlined),title: Text('Contact'),),
-        ListTile(leading:Icon(Icons.account_balance_rounded),title: Text('Account'),),
-        ListTile(leading:Icon(Icons.balance),title: Text('Balance'),),
-        ListTile(leading:Icon(Icons.settings),title: Text('Setting'),),
-        ListTile(leading:Icon(Icons.login),title: Text('Loging'),),
-
-
-
-
-      ],
-      ),
-      ),
-      drawer: Drawer(child:
-      ListView(children: [
-        DrawerHeader(
-          padding: EdgeInsets.all(0),
-          child:UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: Colors.black),
-            accountName: Text('shrabon'),
-            accountEmail: Text('shrabonbhuiyan708@gmail.com'),
-            currentAccountPicture: Image.network('https://web-strapi.mrmilu.com/uploads/flutter_logo_470e9f7491.png'),
-          ),
-
-        ),
-        ListTile(leading:Icon(Icons.home),title: Text('Home'),
-          onTap: (){print('Go to Home');Shrabonsnack('Go to Home', context);
-
-          },
-          onLongPress: (){
-            Shrabonsnack('Error', context);
-          },
-
-        ),
-        ListTile(leading:Icon(Icons.contact_page_outlined),title: Text('Contact'),),
-        ListTile(leading:Icon(Icons.account_balance_rounded),title: Text('Account'),),
-        ListTile(leading:Icon(Icons.balance),title: Text('Balance'),),
-        ListTile(leading:Icon(Icons.settings),title: Text('Setting'),),
-        ListTile(leading:Icon(Icons.login),title: Text('Loging'),),
-
-
-
-
-      ],
-      ),
-      ),
 
 
     );
